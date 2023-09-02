@@ -1,0 +1,19 @@
+import subprocess
+from IPython.display import display, HTML
+from PIL import Image
+
+html = """
+<h1><code>开始安装程序 - 请稍等...</code></h1>
+<h3><code>☕️ 冲杯咖啡并再等5-10分钟吧...</code></h3>
+<h3><code>☕️ 请注意点击链接 <a>gradio.live</a> 或对于 ComfyUI 版本使用 <a>cloudflare</a></code></h3>
+<h3><code>☕️ 安装 Ngrok 令牌以获得最佳连接。</code></h3>
+<p>_________</p>
+"""
+
+display(HTML(html))
+
+!apt -y update -qq
+!wget https://huggingface.co/phamhungd/SDVNColab/resolve/main/libtcmalloc_minimal.so.4 -O /content/libtcmalloc_minimal.so.4
+
+!pip install -q torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 torchtext==0.15.1 torchdata==0.6.0 --extra-index-url https://download.pytorch.org/whl/cu118 -U
+!pip install -q xformers==0.0.19 triton==2.0.0 -U
